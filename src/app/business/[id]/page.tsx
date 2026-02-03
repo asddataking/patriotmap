@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBusiness } from "@/app/actions/businesses";
+
+export const dynamic = "force-dynamic";
 import { isFavorited } from "@/app/actions/favorites";
 import { BadgePills } from "@/components/BadgePills";
 import { FavoriteButton } from "./FavoriteButton";
