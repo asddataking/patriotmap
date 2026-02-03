@@ -10,7 +10,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <NeonAuthUIProvider
-      authClient={authClient}
+      authClient={authClient as any}
       onSessionChange={() => router.refresh()}
       emailOTP
       redirectTo="/explore"
