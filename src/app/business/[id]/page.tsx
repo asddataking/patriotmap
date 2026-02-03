@@ -1,18 +1,29 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBusiness } from "@/app/actions/businesses";
+import { site } from "@/lib/site";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+type Props = { params: Promise<{ id: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const business = await getBusiness(id);
+  if (!business) return { title: "Not found" };
+  return {
+    title: business.name,
+    description: `${business.name} - ${business.category} in ${business.city}, ${business.state}`,
+    alternates: { canonical: `${site.siteUrl}/business/${id}` },
+  };
+}
 import { isFavorited } from "@/app/actions/favorites";
 import { BadgePills } from "@/components/BadgePills";
 import { FavoriteButton } from "./FavoriteButton";
 import { ReportButton } from "./ReportButton";
 
-export default async function BusinessPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function BusinessPage({ params }: Props) {
   const { id } = await params;
   const business = await getBusiness(id);
 

@@ -19,6 +19,9 @@ export function Header() {
           <Link href="/submit" className="text-sm text-gray-600 hover:text-gray-900">
             List a business
           </Link>
+          <Link href="/faq" className="text-sm text-gray-600 hover:text-gray-900">
+            FAQ
+          </Link>
           {session.isPending ? (
             <span className="text-sm text-gray-400">...</span>
           ) : session.data ? (

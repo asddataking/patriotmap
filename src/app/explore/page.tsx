@@ -2,8 +2,15 @@ import { listApprovedBusinesses } from "@/app/actions/businesses";
 import { MapboxMap } from "@/components/MapboxMap";
 import { BusinessCard } from "@/components/BusinessCard";
 import { ExploreFilters } from "./ExploreFilters";
+import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "Explore",
+  description: "Browse the map of opt-in, values-aligned local businesses.",
+  alternates: { canonical: `${site.siteUrl}/explore` },
+};
 
 export default async function ExplorePage({
   searchParams,

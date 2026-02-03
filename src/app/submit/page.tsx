@@ -1,8 +1,15 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { SubmitForm } from "./SubmitForm";
+import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "List a business",
+  description: "Add your business to Patriot Map. Free, opt-in listings for values-aligned businesses.",
+  alternates: { canonical: `${site.siteUrl}/submit` },
+};
 
 export default async function SubmitPage() {
   const session = await getSession();
